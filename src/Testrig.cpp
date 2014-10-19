@@ -75,6 +75,12 @@ int main(void)
 
 void manual_test()
 {
+
+
+
+
+
+
 } 
 
 
