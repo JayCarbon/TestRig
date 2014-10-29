@@ -63,7 +63,29 @@ int main(void)
 		MotorsStartup = true;
 	}
 
-	motor_test();
+	while (true)
+	{
+		string inputtest;
+		printf("(m)anual test or (a)utomatic test?\n"); 	
+		getline (cin, inputtest);
+		if (inputtest = "m" || inputtest = "M")
+	{
+		manual_test();
+		break;
+	}
+	else if (inputtest = "a" || inputtest = "A");
+	{
+		motor_test();
+		break;
+	}	
+	else 
+	{
+		printf("Hey dumbass, the only legit inputs are [Mm] and [Aa], try again fucktard\n");
+	}
+	}
+
+	printf("Resetting speed to 0");
+	motor->setSpeed(0);
 
 	gpioTerminate();
 
@@ -75,12 +97,35 @@ int main(void)
 
 void manual_test()
 {
+	printf("Starting Manual Test\n");
+	printf("Setting Throttle to zero\n");
+	motor->setSpeed(0);
 
+	while (true) 
+	{
+		string inputthrottle;
+		int realthrottle=0;
+		printf("Input the throttle value that you want 0-100. Type 255 to quit.\n");
+		getline (cin, inputthrottle);
+		stringstream(inputthrottle) >> realthrottle;
+		if (realthrottle == 255)
+		{
+			printf("Exiting!\n");
+			break;
+		}
 
+		if (realthrottle < 0 || realthrottle > 100) 
+		{
+			printf("Hey fuckface, type in something between 0 and 100\n");
+			continue;
+		}	
+		else 
+		{
+			printf("Setting throttle to [%i%%]\n", realthrottle);
+			motor->setSpeed(realthrottle);
+		}			
 
-
-
-
+	}
 } 
 
 
