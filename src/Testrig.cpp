@@ -14,6 +14,7 @@ PCA9685 *motorController;
 bool MotorsStartup = false;
 bool MotorsArmed = false;
 bool MotorsArming = false;
+int realchan;
 
 MotorI2C *motor;
 
@@ -26,7 +27,7 @@ int main(void)
 	while (true)
 	{
 	string inputchan;
-	int realchan=0;
+	realchan=0;
 	printf("Input the channel that the test motor is on:\n");
 	getline (cin, inputchan);
 	stringstream(inputchan) >> realchan;
@@ -68,20 +69,20 @@ int main(void)
 		string inputtest;
 		printf("(m)anual test or (a)utomatic test?\n"); 	
 		getline (cin, inputtest);
-		if (inputtest = "m" || inputtest = "M")
-	{
+		if ( inputtest == "m" || inputtest == "M" )
+	    {
 		manual_test();
 		break;
-	}
-	else if (inputtest = "a" || inputtest = "A");
-	{
+	    }
+	    else if ( inputtest == "a" || inputtest == "A" )
+	    {
 		motor_test();
 		break;
-	}	
-	else 
-	{
+	    }	
+	    else 
+    	{
 		printf("Hey dumbass, the only legit inputs are [Mm] and [Aa], try again fucktard\n");
-	}
+	    }
 	}
 
 	printf("Resetting speed to 0");
