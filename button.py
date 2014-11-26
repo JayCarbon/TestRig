@@ -28,10 +28,9 @@ def main():
             else:
                 call (["/home/bojung1/dev/TestRig/derp.py","&"])
         else:
-            # the button isn't being pressed, so turn off the green LED
+            # the button isn't being pressed, so idle
             #a small delay for the loop
-            print "idle"
-            time.sleep(0.2)
+            time.sleep(0.02)
 
     GPIO.cleanup()
 
