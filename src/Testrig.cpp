@@ -111,7 +111,8 @@ void manual_test()
 		stringstream(inputthrottle) >> realthrottle;
 		if (realthrottle == 255)
 		{
-			printf("Exiting!\n");
+			printf("Exiting! Also setting throttle to [0%%]\n");
+			motor->stop();
 			break;
 		}
 
