@@ -20,14 +20,15 @@ def main():
         if GPIO.input(23):
             # the button is being pressed, so run testrig, or idle if already running
             for proc in psutil.process_iter():
-                if "derp.py" in proc.name():
+                if "autorig" in proc.name():
                     rigrun = 1
             if rigrun == 1:
                 rigrun = 0
                 continue
             else:
-                call (["/home/bojung1/dev/TestRig/derp.py","&"])
-        else:
+                #call (["/home/bojung1/dev/TestRig/derp.py","&"])
+                call (["/home/bojung1/dev/TestRig/autorig", "&"])
+    else:
             # the button isn't being pressed, so idle
             #a small delay for the loop
             time.sleep(0.02)
