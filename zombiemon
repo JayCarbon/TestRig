@@ -1,33 +1,35 @@
 #!/bin/bash
-# /etc/init.d/buttonmon
+# /etc/init.d/zombiemon
+
+
 
 ### BEGIN INIT INFO
-# Provides:          buttonmon
+# Provides:          zombiemon
 # Required-Start:    $remote_fs $syslog
 # Required-Stop:     $remote_fs $syslog
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
 # Short-Description: Example initscript
-# Description:       This service is used to manage a python GPIO button daemon 
+# Description:       the janky zombie autorig killer  
 ### END INIT INFO
 
 
 case "$1" in 
     start)
-        runningps=$(ps aux | grep button.py | grep -v grep);
+        runningps=$(ps aux | grep zombie.py | grep -v grep);
         if [[ -n $runningps ]]; then
             echo "Already running"
             exit 1; 
         fi
-        echo "Starting buttonmon"
-        /home/bojung1/dev/TestRig/button.py &
+        echo "Starting zombiemon"
+        /home/bojung1/dev/TestRig/zombie.py &
         ;;
     stop)
-        echo "Stopping buttonmon"
-        pkill -f button.py;
+        echo "Stopping zombiemon"
+        pkill -f zombie.py;
         ;;
     *)
-        echo "Usage: /etc/init.d/buttonmon start|stop"
+        echo "Usage: /etc/init.d/zombiemon start|stop"
         exit 1
         ;;
 esac
