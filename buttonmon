@@ -25,6 +25,7 @@ case "$1" in
     stop)
         echo "Stopping buttonmon"
         pkill -f button.py;
+        pkill -f startpar;
         ;;
     *)
         echo "Usage: /etc/init.d/buttonmon start|stop"

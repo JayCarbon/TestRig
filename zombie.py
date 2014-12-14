@@ -10,7 +10,10 @@ while True:
         if "autorig" in proc.name():
             if proc.status() == "zombie":
                 subprocess.Popen(["/etc/init.d/buttonmon", "stop"])
-                time.sleep(.05)
+                for proc2 in psutil.process_iter():
+                    if "buttonmon" in proc2.name():
+                        print "already on"
+                        break
                 subprocess.Popen(["/etc/init.d/buttonmon", "start"])
 
 
